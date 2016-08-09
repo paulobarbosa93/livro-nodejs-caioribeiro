@@ -1,8 +1,12 @@
 import express from "express";
+import consign from "consign";
 
 const PORT = 3000;
 const app = express();
 
-app.get('/', (req, res) => res.json({status: 'NTask API'}));
+consign()
+	.include('routes')
+	.into(app);
 
-app.listen(PORT, () => console.log(`NTask API - Porta ${PORT}`));
+app
+	.listen(PORT, () => console.log(`NTask API - Porta ${PORT}`));
